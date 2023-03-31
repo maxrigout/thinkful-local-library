@@ -13,9 +13,10 @@ function partitionBooksByBorrowedStatus(books) {
 }
 
 function getBorrowersForBook(book, accounts) {
+  const maxReturnSize = 10;
   const result = [];
-  for (let i = 0; i < book.borrows.length && i < 10; i++) {
-    const borrow = book.borrows[i];
+  for (let index = 0; index < book.borrows.length && index < maxReturnSize; index++) {
+    const borrow = book.borrows[index];
     const returned = borrow.returned;
     const account = accounts.find(account => account.id === borrow.id);
     result.push({ ...account, returned });
