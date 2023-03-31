@@ -13,15 +13,6 @@ function getTotalNumberOfBorrows(account, books) {
 
 function getBooksPossessedByAccount(account, books, authors) {
   const accountId = account.id;
-  // const result = [];
-  // for (let i = 0; i < books.length; i++) {
-  //   const book = books[i];
-  //   if (book.borrows.find(borrower => borrower.id === accountId && !borrower.returned) != undefined) {
-  //     const author = authors.find(aut => aut.id === book.authorId);
-  //     result.push({...book, author});
-  //   }
-  // }
-  // return result;
 
   // we filter the books array to find the ones that haven't been returned by the account. Then we map to the model we want.
   const checkoutdBooks = books.filter(book => book.borrows.find(borrower => borrower.id === accountId && !borrower.returned) != undefined);
@@ -31,10 +22,6 @@ function getBooksPossessedByAccount(account, books, authors) {
   });
   return mapped;
 }
-
-const myFunc = getBooksPossessedByAccount;
-
-myFunc();
 
 module.exports = {
   findAccountById,

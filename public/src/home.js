@@ -65,7 +65,7 @@ const First5ArrayElements = (array) => {
   const maxResultSize = 5
   const result = [];
   for (let index = 0; index < array.length && index < maxResultSize; index++) {
-    result.push(array[i]);
+    result.push(array[index]);
   }
   return result;
 }
