@@ -12,13 +12,17 @@ function partitionBooksByBorrowedStatus(books) {
   return [ checkedOut, returned ];
 }
 
+function findAccountById(accounts, id) {
+  return accounts.find(account => account.id === id);
+}
+
 function getBorrowersForBook(book, accounts) {
   const maxReturnSize = 10;
   const result = [];
   for (let index = 0; index < book.borrows.length && index < maxReturnSize; index++) {
     const borrow = book.borrows[index];
     const returned = borrow.returned;
-    const account = accounts.find(account => account.id === borrow.id);
+    const account = findAccountById(accounts, borrow.id);
     result.push({ ...account, returned });
   }
   return result;

@@ -61,13 +61,16 @@ function getMostPopularAuthors(books, authors) {
   return First5ArrayElements(authorsScores);
 }
 
-const First5ArrayElements = (array) => {
-  const maxResultSize = 5
+function FirstNArrayElements(array, maxResultSize) {
   const result = [];
   for (let index = 0; index < array.length && index < maxResultSize; index++) {
     result.push(array[index]);
   }
   return result;
+}
+
+function First5ArrayElements(array) {
+  return FirstNArrayElements(array, 5);
 }
 
 module.exports = {
